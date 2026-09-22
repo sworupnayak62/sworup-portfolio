@@ -35,3 +35,5 @@ Thumbs.db
 
 # Antigravity / Gemini files
 .gemini/
+
+.netlify/
