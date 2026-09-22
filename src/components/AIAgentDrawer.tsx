@@ -130,7 +130,7 @@ Ask me anything about his skills, projects, background, or social links!`,
     // Docked at bottom-right corner WITHOUT page backdrop or blur!
     <aside
       aria-label="Sworup AI Assistant Chat"
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[390px] h-[520px] max-h-[calc(100vh-5rem)] rounded-2xl bg-obsidian-900 border border-cyan-500/30 shadow-2xl shadow-black/90 flex flex-col overflow-hidden backdrop-blur-xl animate-slideUp"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[99999] w-[calc(100vw-2rem)] sm:w-[390px] h-[520px] max-h-[calc(100vh-5rem)] rounded-2xl bg-obsidian-900 border border-cyan-500/30 shadow-2xl shadow-black/90 flex flex-col overflow-hidden backdrop-blur-xl animate-slideUp"
     >
       {/* Header */}
       <div className="p-3.5 sm:p-4 bg-obsidian-950 border-b border-white/10 flex items-center justify-between shrink-0">
