@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import { Terminal, Cpu, Bot, Layers, Mic, FileCheck, ArrowUpRight } from 'lucide-react';
-import { PORTFOLIO_DATA, Project } from '../data/portfolioData';
-import { ProjectModal } from './ProjectModal';
+import React from 'react';
+import { Terminal, Cpu, Bot, Layers, Mic, FileCheck } from 'lucide-react';
+import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { GithubIcon } from './Icons';
 import { soundSys } from '../utils/audioSynthesis';
 
 export const ProjectsBento: React.FC = () => {
-  const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
-
   const getIcon = (name: string) => {
     switch (name) {
       case 'Terminal': return <Terminal className="w-5 h-5 text-cyan-400" />;
@@ -34,7 +31,7 @@ export const ProjectsBento: React.FC = () => {
           </h2>
         </div>
         <p className="text-xs font-mono text-slate-400 mt-2 sm:mt-0">
-          Click on any card to view architectural details
+          Production architectures &amp; open-source implementations
         </p>
       </div>
 
@@ -43,11 +40,7 @@ export const ProjectsBento: React.FC = () => {
         {PORTFOLIO_DATA.projects.map((project) => (
           <div
             key={project.id}
-            onClick={() => {
-              soundSys.playClick();
-              setActiveModalProject(project);
-            }}
-            className="group relative rounded-2xl bg-obsidian-900/80 border border-white/10 hover:border-cyan-500/40 p-6 flex flex-col justify-between transition-all duration-200 hover:shadow-xl hover:shadow-cyan-950/30 backdrop-blur-sm cursor-pointer"
+            className="group relative rounded-2xl bg-obsidian-900/80 border border-white/10 hover:border-cyan-500/40 p-6 flex flex-col justify-between transition-all duration-200 hover:shadow-xl hover:shadow-cyan-950/30 backdrop-blur-sm"
           >
             <div>
               {/* Header */}
@@ -55,10 +48,9 @@ export const ProjectsBento: React.FC = () => {
                 <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:border-cyan-500/30 transition-colors">
                   {getIcon(project.iconName)}
                 </div>
-                <div className="flex items-center space-x-1.5 text-slate-500 group-hover:text-cyan-400 transition-colors">
-                  <span className="text-[11px] font-mono">Details</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
+                <span className="text-[10px] font-mono text-cyan-400/90 bg-cyan-500/10 border border-cyan-500/20 px-2 py-0.5 rounded-full">
+                  {project.badge}
+                </span>
               </div>
 
               {/* Title & Tagline */}
@@ -85,10 +77,7 @@ export const ProjectsBento: React.FC = () => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    soundSys.playClick();
-                  }}
+                  onClick={() => soundSys.playClick()}
                   className="p-1.5 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
                   title="View GitHub Repository"
                 >
@@ -99,13 +88,6 @@ export const ProjectsBento: React.FC = () => {
           </div>
         ))}
       </div>
-
-      {/* Detail Modal */}
-      <ProjectModal
-        project={activeModalProject}
-        onClose={() => setActiveModalProject(null)}
-      />
-
     </section>
   );
 };
