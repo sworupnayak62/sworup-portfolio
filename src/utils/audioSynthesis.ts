@@ -43,7 +43,7 @@ class AudioSynthesizer {
   }
 
   // Wooden sign clack: a short band-passed noise burst
-  public playClick() {
+  public playClick(freq = 1400) {
     if (this.isMuted) return;
     try {
       this.initCtx();
@@ -56,7 +56,7 @@ class AudioSynthesizer {
       src.buffer = buf;
       const band = this.ctx.createBiquadFilter();
       band.type = 'bandpass';
-      band.frequency.value = 1400;
+      band.frequency.value = freq;
       band.Q.value = 3;
       const gain = this.ctx.createGain();
       gain.gain.setValueAtTime(0.35, now);

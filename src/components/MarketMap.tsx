@@ -72,8 +72,8 @@ export const MarketMap: React.FC<Props> = ({ active, onFind, onAsk, audioMuted, 
         </a>
 
         <ol className="relative mt-10 flex-1 space-y-1">
-          {/* the wire the district bulbs hang from */}
-          <span aria-hidden="true" className="absolute bottom-3 left-[11px] top-3 w-px bg-[#4a4032]" />
+          {/* the rope the district bulbs hang from; a paper lantern hangs at the stall you are in */}
+          <span aria-hidden="true" className="rope absolute bottom-3 left-[9.5px] top-3 w-[3px]" />
           {DISTRICTS.map((d, i) => {
             const isActive = i === activeIdx;
             const inChase =
@@ -89,9 +89,18 @@ export const MarketMap: React.FC<Props> = ({ active, onFind, onAsk, audioMuted, 
                 >
                   <span
                     key={inChase ? chase!.key : undefined}
-                    className={`bulb relative z-[1] mx-[5px] shrink-0 ${isActive ? 'is-on' : 'is-warm'}`}
+                    className={`bulb relative z-[1] mx-[5px] shrink-0 ${isActive ? 'is-on opacity-0' : 'is-warm'}`}
                     style={inChase && !isActive ? { animation: `chase 0.5s ${delay}ms ease-out` } : undefined}
                   />
+                  {isActive && (
+                    <img
+                      src="/lantern.svg"
+                      alt=""
+                      aria-hidden="true"
+                      className="hang swing-in pointer-events-none absolute left-[1.5px] top-1/2 z-[2] -mt-4 h-8 w-[19px] drop-shadow-[0_0_8px_rgba(247,179,43,0.45)]"
+                      style={{ animationDuration: '1.6s' }}
+                    />
+                  )}
                   <span className="leading-tight">
                     <span className={`marker-type block text-[1.05rem] transition-colors ${isActive ? 'text-saffron' : 'text-steam group-hover:text-saffron'}`}>
                       {d.sign}

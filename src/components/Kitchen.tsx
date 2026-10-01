@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Play, RotateCcw, ArrowLeftRight, Undo2, Mic } from 'lucide-react';
 import { soundSys } from '../utils/audioSynthesis';
 import { Wok } from './Wok';
+import { Words } from './Words';
 
 interface Variant {
   drug: string;
@@ -82,31 +83,40 @@ const STEP_MS = 700;
 const INK = '#17130d';
 // Utensils on the rack over the pass, drawn hanging (head down) from a hook at the top of each viewBox.
 // The same art becomes the cursor when a visitor takes one down.
-const UTENSILS: { name: string; w: number; h: number; dur: string; art: string }[] = [
+// `verb` is what it does to the words on the page (see Words.tsx).
+const UTENSILS: { name: string; verb: string; w: number; h: number; dur: string; art: string }[] = [
   {
-    name: 'ladle', w: 26, h: 96, dur: '4.6s',
+    name: 'ladle', verb: 'stirs', w: 26, h: 96, dur: '4.6s',
     art: `<rect x="11" y="6" width="4" height="66" rx="2" fill="#a8622b" stroke="${INK}" stroke-width="1.5"/>
       <ellipse cx="13" cy="82" rx="11" ry="10" fill="#c98a4b" stroke="${INK}" stroke-width="1.8"/>
       <ellipse cx="13" cy="83" rx="7" ry="6" fill="#8a5a2b"/>`,
   },
   {
-    name: 'spatula', w: 26, h: 104, dur: '5.3s',
+    name: 'spatula', verb: 'smashes', w: 26, h: 104, dur: '5.3s',
     art: `<rect x="10" y="6" width="6" height="52" rx="3" fill="#a8622b" stroke="${INK}" stroke-width="1.5"/>
       <rect x="12" y="56" width="2" height="12" fill="#9aa0a8"/>
       <rect x="3" y="67" width="20" height="32" rx="3" fill="#d7d9dd" stroke="${INK}" stroke-width="1.8"/>
       <path d="M9 73v20M13 73v20M17 73v20" stroke="#5c6068" stroke-width="1.6" stroke-linecap="round"/>`,
   },
   {
-    name: 'frying pan', w: 60, h: 118, dur: '6.4s',
+    name: 'frying pan', verb: 'flips', w: 60, h: 118, dur: '6.4s',
     art: `<rect x="26" y="6" width="8" height="46" rx="4" fill="#2a251d" stroke="${INK}" stroke-width="1.5"/>
       <circle cx="30" cy="84" r="27" fill="#2a2d33" stroke="${INK}" stroke-width="2"/>
       <circle cx="30" cy="84" r="20" fill="#3a3e46"/>
       <path d="M17 76a15 15 0 0 1 12-9" fill="none" stroke="#6a707b" stroke-width="2.4" stroke-linecap="round"/>`,
   },
   {
-    name: 'whisk', w: 28, h: 100, dur: '4.9s',
+    name: 'whisk', verb: 'mixes up', w: 28, h: 100, dur: '4.9s',
     art: `<rect x="11" y="6" width="6" height="36" rx="3" fill="#b3301f" stroke="${INK}" stroke-width="1.5"/>
       <path d="M14 42C3 60 4 84 14 96 24 84 25 60 14 42z M14 42C8 62 9 84 14 96 19 84 20 62 14 42z M14 42v54" fill="none" stroke="#c9ccd1" stroke-width="1.6"/>`,
+  },
+  {
+    name: 'knife', verb: 'cuts', w: 32, h: 112, dur: '5.8s',
+    art: `<rect x="12" y="6" width="8" height="36" rx="3" fill="#2a251d" stroke="${INK}" stroke-width="1.5"/>
+      <circle cx="16" cy="16" r="1.4" fill="#9aa0a8"/><circle cx="16" cy="30" r="1.4" fill="#9aa0a8"/>
+      <rect x="10" y="40" width="12" height="5" rx="1.5" fill="#9aa0a8" stroke="${INK}" stroke-width="1.2"/>
+      <path d="M10 45H22V109C13 99 10 77 10 45Z" fill="#d7d9dd" stroke="${INK}" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M14 52v38" stroke="#f4f5f7" stroke-width="1.6" stroke-linecap="round"/>`,
   },
 ];
 
@@ -145,6 +155,7 @@ export const Kitchen: React.FC = () => {
     soundSys.playTick(held === i ? 0.8 : 1.4);
     setHeld(held === i ? null : i);
   };
+  const tool = held === null ? null : UTENSILS[held].name;
   const cur = ORDERS[order];
   const v = cur.variants[variant];
   const path = v.path;
@@ -185,7 +196,7 @@ export const Kitchen: React.FC = () => {
     `${STATIONS[station].name}: ${STATIONS[station].does}`;
 
   return (
-    <section id="demo" className="relative overflow-hidden bg-awning py-24 lg:py-32">
+    <section id="demo" className="relative select-none overflow-hidden bg-awning py-24 lg:py-32">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-60" style={{ backgroundImage: "url('/grain.svg')" }} />
       {/* tiled backsplash */}
       <div
@@ -229,7 +240,7 @@ export const Kitchen: React.FC = () => {
         </div>
         {canHold && (
           <p className="marker-type ml-auto mt-3 w-fit max-w-[19rem] rotate-[-3deg] bg-kraft px-2.5 py-1 text-[0.85rem] leading-snug text-[#17130d] shadow-[0_8px_14px_-8px_rgba(0,0,0,0.8)]">
-            {held === null ? 'Take one down, it becomes your pointer' : `Holding the ${UTENSILS[held].name}. Click its empty hook to hang it back`}
+            {held === null ? 'Take one down, try it on the words below' : `The ${UTENSILS[held].name} ${UTENSILS[held].verb} any word you click, or drag across. Click its empty hook to hang it back`}
           </p>
         )}
       </div>
@@ -237,11 +248,11 @@ export const Kitchen: React.FC = () => {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <div className="flex items-end gap-4 sm:gap-6">
-              <h2 className="brush-type text-[clamp(3.2rem,7vw,5.5rem)] text-steam">The kitchen</h2>
+              <h2 className="brush-type text-[clamp(3.2rem,7vw,5.5rem)] text-steam"><Words text="The kitchen" tool={tool} /></h2>
               <Wok hot={cooking} className="mb-1 h-20 w-[7.5rem] shrink-0 sm:h-28 sm:w-[10.5rem]" />
             </div>
             <p className="mt-4 text-lg leading-relaxed text-[#dfe5f5]">
-              How his clinical pipeline turns a doctor's spoken note into a structured record, one agent at a time, and what the guardrail does when something is unsafe.
+              <Words text="How his clinical pipeline turns a doctor's spoken note into a structured record, one agent at a time, and what the guardrail does when something is unsafe." tool={tool} />
             </p>
           </div>
           <div role="group" aria-label="Choose an order" className="flex flex-wrap gap-3">
@@ -291,7 +302,7 @@ export const Kitchen: React.FC = () => {
                 </div>
 
                 <p className="relative mt-3 text-[1.02rem] leading-relaxed">
-                  {cur.before}
+                  <Words text={cur.before} tool={tool} />
                   {cur.variants.length > 1 ? (
                     <button
                       onClick={swap}
@@ -303,7 +314,7 @@ export const Kitchen: React.FC = () => {
                   ) : (
                     <span className="bg-[linear-gradient(transparent_50%,rgba(247,179,43,0.6)_50%)] px-0.5 font-semibold">{v.drug}</span>
                   )}
-                  {cur.after}
+                  <Words text={cur.after} tool={tool} />
                 </p>
 
                 <div className="relative mt-4 flex items-end justify-between gap-3 border-t border-dashed border-[#17130d]/40 pt-3">
@@ -346,8 +357,8 @@ export const Kitchen: React.FC = () => {
                       {i + 1}
                     </span>
                     <span className="min-w-0">
-                      <span className="marker-type block text-[0.8rem] leading-tight lg:text-lg">{s.name}</span>
-                      <span className="hidden text-sm opacity-85 lg:block">{rejecting ? 'rejected, sent back' : s.does}</span>
+                      <span className="marker-type block text-[0.8rem] leading-tight lg:text-lg"><Words text={s.name} tool={tool} /></span>
+                      <span className="hidden text-sm opacity-85 lg:block"><Words text={rejecting ? 'rejected, sent back' : s.does} tool={tool} /></span>
                     </span>
                     {/* the burner under each station: flame while cooking here, embers once visited */}
                     <span aria-hidden="true" className="absolute -bottom-1.5 left-1/2 flex -translate-x-1/2 items-end gap-[3px] lg:-bottom-2">
@@ -372,7 +383,7 @@ export const Kitchen: React.FC = () => {
             </ol>
             <p className="mt-4 min-h-[3rem] text-sm leading-snug text-[#e6ebf8]" aria-live="polite">
               {sentBack && !served && v.rejected ? '↺ ' : ''}
-              {status}
+              <Words text={status} tool={tool} />
             </p>
           </div>
 
@@ -381,13 +392,13 @@ export const Kitchen: React.FC = () => {
             <div className="relative rounded-sm bg-[#101a3d] p-6 font-mono text-[0.85rem] leading-relaxed text-[#dfe5f5]">
               <p className="marker-type font-body text-sm text-saffron">Structured EMR record</p>
               {pos < 0 ? (
-                <p className="mt-4 font-body text-base text-[#aebce2]">Press “Cook this order” to watch the record fill in.</p>
+                <p className="mt-4 font-body text-base text-[#aebce2]"><Words text="Press “Cook this order” to watch the record fill in." tool={tool} /></p>
               ) : (
                 <dl className="mt-4 space-y-2">
                   {v.record.slice(0, fieldsShown).map(([k, val]) => (
                     <div key={k} className="grid grid-cols-[7rem_1fr] gap-3 [animation:flicker-on_0.5s_ease-out]">
-                      <dt className="text-[#8fa0d0]">{k}</dt>
-                      <dd className={val.endsWith('HELD') ? 'text-saffron' : 'text-steam'}>{val}</dd>
+                      <dt className="text-[#8fa0d0]"><Words text={k} tool={tool} /></dt>
+                      <dd className={val.endsWith('HELD') ? 'text-saffron' : 'text-steam'}><Words text={val} tool={tool} /></dd>
                     </div>
                   ))}
                   {!served && <div className="text-[#8fa0d0]">…</div>}
@@ -398,7 +409,7 @@ export const Kitchen: React.FC = () => {
                   {v.rejected ? 'Held' : 'Served'}
                 </span>
               )}
-              {served && <p className="mt-5 border-t border-white/10 pt-3 font-body text-sm text-saffron">{v.flag}</p>}
+              {served && <p className="mt-5 border-t border-white/10 pt-3 font-body text-sm text-saffron"><Words text={v.flag} tool={tool} /></p>}
             </div>
           </div>
         </div>
