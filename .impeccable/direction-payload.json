@@ -1,0 +1,122 @@
+{
+  "title": "Choose the visual world for your portfolio",
+  "question": "The roll assigned the Pattachitra Scroll. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Pattachitra Scroll",
+      "kicker": "THE ROLL",
+      "lineage": "Odisha pattachitra cloth scroll painting (Raghurajpur, near Puri)",
+      "thesis": "Your career as a painted Odia scroll: bordered narrative panels, each one a system you shipped, read in sequence like an agent pipeline.",
+      "palette": ["#c8321e", "#e8a90f", "#1d2a6b", "#16110d", "#efe6d2"],
+      "materials": ["flat mineral pigment fields", "heavy lamp-black outlines", "repeating ornamental borders"],
+      "viewport": "A drenched vermilion field; your name set at wall scale inside a thick patterned border, with the dictation-to-record pipeline shown as the first three panels of the scroll.",
+      "risk": "Reads as decoration if the borders are timid or the tech proof is buried; global recruiters may not know the tradition.",
+      "raised": [
+        {"from": "challenger-ikebana", "raise": "Ma: one panel per scroll is left deliberately empty in charged vermilion, so the dense panels breathe."},
+        {"from": "challenger-quilt", "raise": "Provenance: every metric is stitched to the role and date it came from, never floating free."},
+        {"from": "challenger-dumbar", "raise": "Module lock: every panel snaps to one strict border module, so the scroll stays a system at any width."},
+        {"from": "challenger-greiman", "raise": "Scale jumps: type swings from footnote to billboard inside one panel."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "ECG Thermal Printout",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "12-lead ECG thermal paper strips",
+      "thesis": "The page is a live ECG strip: salmon millimetre grid, black trace, and every project is a waveform segment read out and annotated.",
+      "palette": ["#f4c7b8", "#e0826b", "#141414", "#fbf4ef", "#1b5fbf"],
+      "materials": ["thermal paper", "millimetre grid", "printed header fields"],
+      "viewport": "A continuous strip whose trace draws your name, with the header block (name, role, rate) printed like a patient header.",
+      "risk": "The most familiar of these for healthcare tech; clinical grids can feel cold."
+    },
+    {
+      "id": "challenger-sequencer",
+      "label": "Drum Machine Step Row",
+      "verdict": "competitive",
+      "lineage": "early-80s rhythm machines",
+      "thesis": "Your agent pipeline as a pattern you program: steps are agents, the chase light is execution, and sound is native.",
+      "palette": ["#2a2a2c", "#e0412b", "#f08a24", "#f2cf3a", "#f3f1ea"],
+      "materials": ["charcoal panel", "candy step keys", "LED glow", "silkscreen labels"],
+      "viewport": "A 16-step row across the full width; pressing run plays the transcribe/extract/validate/format pipeline in tempo.",
+      "case": "Holds product clarity (pipeline = pattern) and fits the sound request; loses on audience identification.",
+      "risk": "Can read as a music toy rather than an engineer."
+    },
+    {
+      "id": "challenger-ascii",
+      "label": "ASCII Live Render",
+      "verdict": "competitive",
+      "lineage": "typewriter and terminal glyph art",
+      "thesis": "Everything rendered in live glyph density; your portrait and the pipeline become text you can select.",
+      "palette": ["#0b0d0a", "#f2b23a", "#6a5a3a"],
+      "materials": ["single-ink amber phosphor", "strict monospace grid"],
+      "viewport": "A full-grid live render of your name that re-rasterizes under the pointer.",
+      "case": "Engineers identify instantly; loses on clarity for recruiters and clients.",
+      "risk": "Close to the dark-terminal look every dev portfolio ships."
+    },
+    {
+      "id": "challenger-ikebana",
+      "label": "Ikebana Ma Arrangement",
+      "verdict": "declined",
+      "lineage": "tokonoma alcove arrangement",
+      "thesis": "Three lines and charged emptiness.",
+      "palette": ["#e9e4da", "#6b5a48", "#3f5fb0", "#3a2e24"],
+      "materials": ["plaster", "weathered pine", "bronze"],
+      "viewport": "One asymmetric line across empty plaster.",
+      "case": "Too quiet for a bold brief; no tie to the product.",
+      "risk": "Reads precious.",
+      "kept": "Charged empty space as an active element."
+    },
+    {
+      "id": "challenger-quilt",
+      "label": "Memory Quilt Atlas",
+      "verdict": "declined",
+      "lineage": "pieced garment quilts",
+      "thesis": "Blocks of worn history seamed together.",
+      "palette": ["#6f86a6", "#c2382f", "#1c1c1c", "#6b4a2b"],
+      "materials": ["chambray", "stitching"],
+      "viewport": "A quilt grid of unequal patches.",
+      "case": "Sentimental register fights the engineering proof.",
+      "risk": "Reads craft-fair.",
+      "kept": "Provenance seamed to every piece."
+    },
+    {
+      "id": "challenger-dumbar",
+      "label": "Modular Colour Bars",
+      "verdict": "declined",
+      "lineage": "Dutch modular identity systems",
+      "thesis": "Saturated bars over photography.",
+      "palette": ["#00a3e0", "#e6007e", "#ffe600", "#3aaa35"],
+      "materials": ["flat vector bars", "photography"],
+      "viewport": "Tilted photo under stacked bars.",
+      "case": "Needs photography that does not exist.",
+      "risk": "Generic agency look without photos.",
+      "kept": "A strict module everything snaps to."
+    },
+    {
+      "id": "challenger-greiman",
+      "label": "Hybrid Bitmap Collage",
+      "verdict": "declined",
+      "lineage": "April Greiman hybrid posters",
+      "thesis": "Bitmap layers on angled ramps.",
+      "palette": ["#1ba3a3", "#e0337a", "#f4f1ea"],
+      "materials": ["dither", "video stills"],
+      "viewport": "Angled type over bitmap collage.",
+      "case": "Layered collage hurts recruiter scanning.",
+      "risk": "Chaotic on mobile.",
+      "kept": "Footnote-to-billboard scale jumps."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A clean modern developer portfolio, executed impeccably.",
+    "palette": ["#ffffff", "#111827", "#2563eb"],
+    "materials": ["clean grid", "project cards"],
+    "viewport": "Name and role, primary CTA, project grid below.",
+    "risk": "Looks like every other engineer's portfolio by design."
+  },
+  "steer": true
+}

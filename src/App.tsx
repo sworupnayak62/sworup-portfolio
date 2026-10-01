@@ -1,62 +1,67 @@
-import React, { useState } from 'react';
-import { AgentCanvas } from './components/AgentCanvas';
-import { Navbar } from './components/Navbar';
+import React, { useCallback, useEffect, useState } from 'react';
+import { MarketMap, useActiveDistrict } from './components/MarketMap';
 import { Hero } from './components/Hero';
-import { ProjectsBento } from './components/ProjectsBento';
-import { InteractiveDemo } from './components/InteractiveDemo';
-import { SkillsMatrix } from './components/SkillsMatrix';
-import { EducationSection } from './components/EducationSection';
-import { ContactHub } from './components/ContactHub';
+import { Stalls } from './components/Stalls';
+import { Kitchen } from './components/Kitchen';
+import { MenuBoard } from './components/MenuBoard';
+import { Workshop } from './components/Workshop';
+import { Counter } from './components/Counter';
+import { Bill } from './components/Bill';
 import { CommandPalette } from './components/CommandPalette';
-import { AIAgentDrawer } from './components/AIAgentDrawer';
+import { AskDrawer } from './components/AskDrawer';
+import { OrderPot } from './components/OrderPot';
 import { soundSys } from './utils/audioSynthesis';
 
 export const App: React.FC = () => {
-  const [isAgentOpen, setIsAgentOpen] = useState(false);
-  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+  const [isFindOpen, setIsFindOpen] = useState(false);
+  const [isAskOpen, setIsAskOpen] = useState(false);
   const [audioMuted, setAudioMuted] = useState(soundSys.getMuted());
+  const active = useActiveDistrict();
 
-  const handleToggleAudio = () => {
-    const newMuted = soundSys.toggleMute();
-    setAudioMuted(newMuted);
-  };
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsFindOpen((o) => !o);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  const toggleAudio = () => setAudioMuted(soundSys.toggleMute());
+  const openAsk = useCallback(() => { soundSys.playTick(); setIsAskOpen(true); }, []);
+  const closeAsk = useCallback(() => setIsAskOpen(false), []);
+  const closeFind = useCallback(() => setIsFindOpen(false), []);
+
+  // pause CSS animation in sections that are off screen
+  useEffect(() => {
+    const io = new IntersectionObserver((es) => es.forEach((e) => e.target.toggleAttribute('data-offscreen', !e.isIntersecting)));
+    document.querySelectorAll('main > section').forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <div className="relative min-h-screen bg-obsidian-950 text-slate-100 font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* Interactive 2D Neural Node Background Canvas */}
-      <AgentCanvas />
+    <div className="relative min-h-screen lg:pl-[208px]">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-sm focus:bg-saffron focus:px-4 focus:py-2 focus:font-semibold focus:text-[#17130d]"
+      >
+        Skip to content
+      </a>
+      <CommandPalette isOpen={isFindOpen} onClose={closeFind} onAsk={openAsk} onToggleAudio={toggleAudio} audioMuted={audioMuted} />
+      <AskDrawer open={isAskOpen} onClose={closeAsk} section={active} />
+      {!isAskOpen && <OrderPot onClick={openAsk} />}
+      <MarketMap active={active} onFind={() => setIsFindOpen(true)} onAsk={openAsk} audioMuted={audioMuted} onToggleAudio={toggleAudio} />
 
-      {/* Global Command Palette (Cmd+K / Ctrl+K) */}
-      <CommandPalette
-        isOpen={isCommandPaletteOpen}
-        onClose={() => setIsCommandPaletteOpen(false)}
-        onOpenAgent={() => setIsAgentOpen(true)}
-        onToggleAudio={handleToggleAudio}
-        audioMuted={audioMuted}
-      />
-
-      {/* Embedded Sworup AI Conversational Assistant Drawer */}
-      <AIAgentDrawer
-        isOpen={isAgentOpen}
-        onClose={() => setIsAgentOpen(false)}
-      />
-
-      {/* Navigation Command Header */}
-      <Navbar
-        onOpenAgent={() => setIsAgentOpen(true)}
-        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
-        audioMuted={audioMuted}
-        onToggleAudio={handleToggleAudio}
-      />
-
-      {/* Clean, Non-Cluttered Main Sections */}
-      <main className="relative z-10">
-        <Hero onOpenAgent={() => setIsAgentOpen(true)} />
-        <ProjectsBento />
-        <InteractiveDemo />
-        <SkillsMatrix />
-        <EducationSection />
-        <ContactHub />
+      <main id="main" tabIndex={-1} className="outline-none">
+        <Hero />
+        <Stalls />
+        <Kitchen />
+        <MenuBoard />
+        <Workshop />
+        <Bill />
+        <Counter />
       </main>
     </div>
   );

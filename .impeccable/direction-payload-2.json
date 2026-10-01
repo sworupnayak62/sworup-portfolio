@@ -1,0 +1,123 @@
+{
+  "title": "Choose the visual world for your portfolio",
+  "question": "Fresh hand. The roll assigned the Punched-Card Deck. Keep it, take an alternate, or re-roll.",
+  "followup": false,
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Punched-Card Deck",
+      "kicker": "THE ROLL",
+      "lineage": "80-column punched cards and batch job decks",
+      "thesis": "Your portfolio is a job deck: each system you shipped is one punched card, and the live demo punches a doctor's messy dictation into a structured card, column by column.",
+      "palette": ["#1f3fbf", "#f0e2c0", "#e2553a", "#2f8a5b", "#121212"],
+      "materials": ["card stock with printed column grid", "punched holes showing the saturated blue ground", "colour-striped header cards"],
+      "viewport": "A drenched card-reader blue field; a giant punched card carries your name in printed caps with the holes spelling it in the column grid; the deck fans out below, ready to feed.",
+      "risk": "Retro-computing nostalgia if the cards stay static; the card stock must not drift into beige.",
+      "raised": [
+        {"from": "challenger-specimen", "raise": "Hierarchy by scale alone: the name is set enormous against tiny column numbers, no badges."},
+        {"from": "challenger-terminal", "raise": "Keyboard-first: every card, the demo, and the deck can be driven from the keyboard."},
+        {"from": "challenger-menhera", "raise": "Whole-unit borders: the column grid repeats in whole cells at every width, never cropped."},
+        {"from": "challenger-sewing", "raise": "Numbered steps: every pipeline stage carries a circled step number on the card it punches."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Agent Transit Map",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "metro diagrams",
+      "thesis": "Your LangGraph pipelines drawn as a metro map: agents are stations, the validation loop is a circle line, and each project is a line you can ride.",
+      "palette": ["#f6f6f2", "#e3262f", "#0a8f5a", "#f5a300", "#1b3e9b", "#151515"],
+      "materials": ["45-degree line geometry", "station ticks and interchange rings"],
+      "viewport": "Full-width map whose central interchange is your name; lines leave toward Projects, Demo, Skills, Contact.",
+      "risk": "The most familiar hand here; diagram-as-map portfolios are a known move."
+    },
+    {
+      "id": "challenger-deepdive",
+      "label": "Depth Dive",
+      "verdict": "competitive",
+      "lineage": "technical dive logs and dive computers",
+      "thesis": "Scroll is depth: recruiter summary at the surface, architecture and code the deeper you go, with a depth gauge ruling the page.",
+      "palette": ["#2ec4d6", "#0f3a6b", "#061528", "#eaf2f5"],
+      "materials": ["deepening ink blue", "marine-snow particles", "dive-computer digits"],
+      "viewport": "Turquoise surface with your name; a depth gauge on the edge starts at 0 m.",
+      "case": "Matches the one-minute scan, ten-minute depth principle; loses on audience identification.",
+      "risk": "Ocean theme has no tie to the actual work."
+    },
+    {
+      "id": "challenger-centrerail",
+      "label": "Annotated Reference Edition",
+      "verdict": "competitive",
+      "lineage": "wide-margin scholarly editions",
+      "thesis": "Your work set as a dense two-column edition with a vermilion key rail and architecture notes hanging in the margin.",
+      "palette": ["#efe8da", "#161412", "#c2371d"],
+      "materials": ["hairline rules drawn by a ruling engine", "small caps apparatus"],
+      "viewport": "Two columns of project text, the margin carrying LangGraph notes bracketed to their lines.",
+      "case": "Engineering leads get real depth; loses on boldness and recruiter scanning.",
+      "risk": "Lands in the editorial-serif look many AI pages ship."
+    },
+    {
+      "id": "challenger-terminal",
+      "label": "Phosphor Terminal",
+      "verdict": "declined",
+      "lineage": "green-phosphor terminals",
+      "thesis": "Everything as an 80-column terminal session.",
+      "palette": ["#050805", "#33ff66", "#1a7a33"],
+      "materials": ["phosphor glow", "scanlines"],
+      "viewport": "A blinking prompt.",
+      "case": "It is the dark-glow look you asked to leave.",
+      "risk": "Generic developer portfolio.",
+      "kept": "Keyboard-first operation."
+    },
+    {
+      "id": "challenger-specimen",
+      "label": "Variable Type Specimen",
+      "verdict": "declined",
+      "lineage": "foundry specimen sites",
+      "thesis": "A giant letter morphs under a slider.",
+      "palette": ["#f7f7f5", "#111111", "#ff4d1a"],
+      "materials": ["flat paper", "ink"],
+      "viewport": "One giant glyph and an axis slider.",
+      "case": "Speaks to type designers, not your audiences.",
+      "risk": "Nothing about AI or clinical work.",
+      "kept": "Hierarchy by scale contrast alone."
+    },
+    {
+      "id": "challenger-sewing",
+      "label": "Sewing Pattern Envelope",
+      "verdict": "declined",
+      "lineage": "home sewing patterns",
+      "thesis": "Views A/B/C and tissue pieces.",
+      "palette": ["#e6d6a8", "#1b1b1b", "#c8272d"],
+      "materials": ["tissue", "dashed cut lines"],
+      "viewport": "An envelope front with three views.",
+      "case": "Wrong world for the work.",
+      "risk": "Reads craft hobby.",
+      "kept": "Circled numbered steps."
+    },
+    {
+      "id": "challenger-menhera",
+      "label": "Pastel Mascot Sheet",
+      "verdict": "declined",
+      "lineage": "menhera pastel character goods",
+      "thesis": "A cute mascot with medical accessories.",
+      "palette": ["#ff8fc2", "#8fe3c8", "#111111"],
+      "materials": ["heavy outlines", "cross border motif"],
+      "viewport": "Mascot centred on candy pink.",
+      "case": "Medical-grimness humour is wrong for clinical software.",
+      "risk": "Undermines trust.",
+      "kept": "Borders that repeat in whole units."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A clean modern developer portfolio, executed impeccably.",
+    "palette": ["#ffffff", "#111827", "#2563eb"],
+    "materials": ["clean grid", "project cards"],
+    "viewport": "Name and role, primary CTA, project grid below.",
+    "risk": "Looks like every other engineer's portfolio by design."
+  },
+  "steer": true
+}

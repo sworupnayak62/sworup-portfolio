@@ -1,0 +1,97 @@
+{
+  "title": "Choose the visual world for your portfolio",
+  "question": "Bolder hand. The deal led with the Night-Market Sign River. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "challenger-nightmarket",
+      "label": "Night-Market Sign River",
+      "kicker": "THE ROLL",
+      "lineage": "night-market streets: lanterns, awnings, hand-painted boards",
+      "thesis": "Your portfolio is a night market: a river of saffron lanterns leads visitors past stalls, each system you shipped a stall with its own hand-painted sign, ending at a stall where you can talk to him.",
+      "palette": ["#f29a1f", "#0e0f12", "#1f5fae", "#d63a2a", "#f4efe6"],
+      "materials": ["wet-asphalt black street", "saffron lantern glow", "hand-painted sign boards and awning stripes", "steam as the divider between districts"],
+      "viewport": "A dark street at night; a string of lanterns sways across the top and lights up one at a time; your name hangs as the market's big painted gate sign, and the lantern river bends down toward the first stalls.",
+      "risk": "Can tip into theme-park if signage gets cute; every sign must still read like a clear label.",
+      "raised": [
+        {"from": "challenger-pushpin", "raise": "Flat fills only: every sign is flat ink with no gradients or shading, and state changes by swapping hue."},
+        {"from": "challenger-indoorsun", "raise": "One colour flattens the night: saffron lantern light is the only glow on the page."},
+        {"from": "challenger-gravity", "raise": "A live simulation: the lantern river responds to the pointer and reroutes toward the stall you hover, like an agent routing a request."}
+      ]
+    },
+    {
+      "id": "challenger-splitflap",
+      "label": "Split-Flap Concourse",
+      "verdict": "competitive",
+      "lineage": "rail station departure boards",
+      "thesis": "Your work as a departures board: projects are trains, status and stack are columns, and every change clatters letter by letter.",
+      "palette": ["#111111", "#f5f5f0", "#9aa0a6", "#f2a900", "#b3261e"],
+      "materials": ["matte black flaps", "brushed steel frame", "amber row lamps"],
+      "viewport": "A full-width board whose top row flips into your name, with rows for each shipped system below.",
+      "case": "Everyone reads a departure board instantly; loses boldness to the night market.",
+      "risk": "One-note if the board is the only idea."
+    },
+    {
+      "id": "challenger-zine",
+      "label": "Hand-Drawn Tech Zine",
+      "verdict": "competitive",
+      "lineage": "hand-drawn technical zines",
+      "thesis": "Your LangGraph pipeline explained like a friend sketching on a napkin: marker diagrams, doodle arrows, highlighter swipes.",
+      "palette": ["#fbf6ea", "#141414", "#ffe14d", "#ff6fa8", "#2cc4b5"],
+      "materials": ["marker ink", "highlighter", "doodled SVG arrows"],
+      "viewport": "A marker headline with a doodled pipeline drawing itself in on load.",
+      "case": "Best at making the agent pipeline clear; loses on audience identification for senior roles.",
+      "risk": "Cream paper and doodles can read junior."
+    },
+    {
+      "id": "challenger-pushpin",
+      "label": "Push Pin Poster",
+      "verdict": "declined",
+      "lineage": "Push Pin Studios posters",
+      "thesis": "Flat candy silhouettes with ribbon hair.",
+      "palette": ["#f3e7d3", "#ff7bac", "#1fb5a8", "#f4a81d", "#111111"],
+      "materials": ["flat fills", "contour line art"],
+      "viewport": "One jet silhouette blooming ribbons.",
+      "case": "Needs illustrated portraiture that does not exist.",
+      "risk": "Reads as an illustration portfolio.",
+      "kept": "Flat fills, state by hue swap."
+    },
+    {
+      "id": "challenger-indoorsun",
+      "label": "Indoor Weather Sun",
+      "verdict": "declined",
+      "lineage": "installation art",
+      "thesis": "An amber haze hall with a mirrored sun.",
+      "palette": ["#f2a23a", "#2a1a0c", "#ffd27a"],
+      "materials": ["haze", "mirror"],
+      "viewport": "A half sun and silhouettes.",
+      "case": "Beautiful, unrelated to the work.",
+      "risk": "Pure mood.",
+      "kept": "One colour flattening everything."
+    },
+    {
+      "id": "challenger-gravity",
+      "label": "Gravity-Rain Garden",
+      "verdict": "declined",
+      "lineage": "surreal physics worlds",
+      "thesis": "Rain obeys coloured clouds.",
+      "palette": ["#5f6f63", "#3a6fd8", "#d8443a", "#111111"],
+      "materials": ["vector-field physics"],
+      "viewport": "Clouds raining in different directions.",
+      "case": "Playful but hides the work.",
+      "risk": "Hard to scan.",
+      "kept": "A live simulation as the signature interaction."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A clean modern developer portfolio, executed impeccably.",
+    "palette": ["#ffffff", "#111827", "#2563eb"],
+    "materials": ["clean grid", "project cards"],
+    "viewport": "Name and role, primary CTA, project grid below.",
+    "risk": "Looks like every other engineer's portfolio by design."
+  },
+  "steer": true
+}

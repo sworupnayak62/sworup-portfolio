@@ -1,260 +1,115 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Search, Bot, Sparkles, ExternalLink, Copy, Volume2, VolumeX, ArrowRight, CornerDownLeft } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Search, ArrowRight, Copy, ExternalLink, Volume2, VolumeX, MessageCircle, CornerDownLeft, Download } from 'lucide-react';
+import { CV_URL } from './Bill';
 import { soundSys } from '../utils/audioSynthesis';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { DISTRICTS, jumpTo } from './MarketMap';
+import { useDialog } from '../utils/useDialog';
 
-interface CommandPaletteProps {
+interface Props {
   isOpen: boolean;
   onClose: () => void;
-  onOpenAgent: () => void;
+  onAsk: () => void;
   onToggleAudio: () => void;
   audioMuted: boolean;
 }
 
-interface CommandItem {
-  id: string;
-  category: 'Navigation' | 'Actions' | 'External';
-  title: string;
-  subtitle?: string;
-  icon: React.ReactNode;
-  action: () => void;
-}
+interface Item { id: string; title: string; hint: string; icon: React.ReactNode; run: () => void }
 
-export const CommandPalette: React.FC<CommandPaletteProps> = ({
-  isOpen,
-  onClose,
-  onOpenAgent,
-  onToggleAudio,
-  audioMuted,
-}) => {
-  const [query, setQuery] = useState('');
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [copiedText, setCopiedText] = useState<string | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+export const CommandPalette: React.FC<Props> = ({ isOpen, onClose, onAsk, onToggleAudio, audioMuted }) => {
+  const [q, setQ] = useState('');
+  const [sel, setSel] = useState(0);
+  const [note, setNote] = useState('');
+  const input = useRef<HTMLInputElement | null>(null);
+  const panel = useRef<HTMLDivElement | null>(null);
+  useDialog(panel, isOpen, onClose);
+  const { email, phone, linkedin, github } = PORTFOLIO_DATA.personal;
 
   useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50);
-      setSelectedIndex(0);
-      setQuery('');
-    }
+    if (!isOpen) return;
+    setQ('');
+    setSel(0);
+    setNote('');
+    requestAnimationFrame(() => input.current?.focus());
   }, [isOpen]);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        if (isOpen) onClose();
-      }
-      if (e.key === 'Escape' && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
-
-  const copyToClipboard = (text: string, label: string) => {
-    soundSys.playSuccess();
-    navigator.clipboard.writeText(text);
-    setCopiedText(label);
-    setTimeout(() => setCopiedText(null), 2000);
+  const go = (id: string) => { onClose(); jumpTo(id); };
+  const copy = (text: string, label: string) => {
+    navigator.clipboard?.writeText(text).then(() => { soundSys.playSuccess(); setNote(`${label} copied`); }, () => setNote('Copy failed'));
   };
 
-  const navigateTo = (selector: string) => {
-    soundSys.playClick();
-    onClose();
-    const el = document.querySelector(selector);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const commands: CommandItem[] = [
+  const items: Item[] = [
+    ...DISTRICTS.map((d) => ({ id: d.id, title: `Go to ${d.sign}`, hint: d.plain, icon: <ArrowRight className="h-4 w-4" />, run: () => go(d.id) })),
     {
-      id: 'ai-agent',
-      category: 'Actions',
-      title: 'Launch Sworup AI Chat Assistant',
-      subtitle: 'Ask about LangGraph, React, or his projects',
-      icon: <Bot className="w-4 h-4 text-cyan-400" />,
-      action: () => {
-        onClose();
-        onOpenAgent();
-      },
+      id: 'ask', title: 'Ask at the counter', hint: 'Scripted Q&A about his work', icon: <MessageCircle className="h-4 w-4" />,
+      run: () => { onClose(); onAsk(); },
     },
+    { id: 'cv', title: 'Download CV', hint: 'PDF, one page', icon: <Download className="h-4 w-4" />, run: () => { const a = document.createElement('a'); a.href = CV_URL; a.download = ''; a.click(); onClose(); } },
+    { id: 'email', title: 'Copy email', hint: email, icon: <Copy className="h-4 w-4" />, run: () => copy(email, 'Email') },
+    { id: 'phone', title: 'Copy phone', hint: phone, icon: <Copy className="h-4 w-4" />, run: () => copy(phone, 'Phone') },
+    { id: 'li', title: 'Open LinkedIn', hint: 'linkedin.com/in/sworup-ranjan-nayak', icon: <ExternalLink className="h-4 w-4" />, run: () => window.open(linkedin, '_blank', 'noopener') },
+    { id: 'gh', title: 'Open GitHub', hint: 'github.com/sworupnayak62', icon: <ExternalLink className="h-4 w-4" />, run: () => window.open(github, '_blank', 'noopener') },
     {
-      id: 'nav-proj',
-      category: 'Navigation',
-      title: 'Jump to Featured Projects',
-      subtitle: 'GitHub MCP, Clinical Pipeline, Data Entry AI Agent',
-      icon: <ArrowRight className="w-4 h-4 text-slate-400" />,
-      action: () => navigateTo('#projects'),
-    },
-    {
-      id: 'nav-demo',
-      category: 'Navigation',
-      title: 'Jump to Interactive AI Demo',
-      subtitle: 'Test live LangGraph clinical text extraction',
-      icon: <ArrowRight className="w-4 h-4 text-cyan-400" />,
-      action: () => navigateTo('#demo'),
-    },
-    {
-      id: 'nav-skills',
-      category: 'Navigation',
-      title: 'Explore Technical Skills',
-      subtitle: 'LangGraph, React, TypeScript, Python, AWS',
-      icon: <ArrowRight className="w-4 h-4 text-slate-400" />,
-      action: () => navigateTo('#skills'),
-    },
-    {
-      id: 'copy-email',
-      category: 'Actions',
-      title: 'Copy Email Address',
-      subtitle: PORTFOLIO_DATA.personal.email,
-      icon: <Copy className="w-4 h-4 text-cyan-300" />,
-      action: () => copyToClipboard(PORTFOLIO_DATA.personal.email, 'Email copied!'),
-    },
-    {
-      id: 'copy-phone',
-      category: 'Actions',
-      title: 'Copy Phone Number',
-      subtitle: PORTFOLIO_DATA.personal.phone,
-      icon: <Copy className="w-4 h-4 text-cyan-300" />,
-      action: () => copyToClipboard(PORTFOLIO_DATA.personal.phone, 'Phone copied!'),
-    },
-    {
-      id: 'toggle-sound',
-      category: 'Actions',
-      title: audioMuted ? 'Enable Procedural Audio SFX' : 'Mute Audio SFX',
-      subtitle: 'Procedural Web Audio feedback',
-      icon: audioMuted ? <Volume2 className="w-4 h-4 text-amber-400" /> : <VolumeX className="w-4 h-4 text-slate-400" />,
-      action: () => onToggleAudio(),
-    },
-    {
-      id: 'ext-linkedin',
-      category: 'External',
-      title: 'Open LinkedIn Profile',
-      subtitle: 'linkedin.com/in/sworup-ranjan-nayak',
-      icon: <ExternalLink className="w-4 h-4 text-sky-400" />,
-      action: () => window.open(PORTFOLIO_DATA.personal.linkedin, '_blank'),
-    },
-    {
-      id: 'ext-github',
-      category: 'External',
-      title: 'Open GitHub Profile',
-      subtitle: 'github.com/sworupnayak62',
-      icon: <ExternalLink className="w-4 h-4 text-slate-300" />,
-      action: () => window.open(PORTFOLIO_DATA.personal.github, '_blank'),
+      id: 'sound', title: audioMuted ? 'Turn market sounds on' : 'Turn market sounds off', hint: 'Clacks, bulb ticks, a bell',
+      icon: audioMuted ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />, run: onToggleAudio,
     },
   ];
 
-  const filtered = commands.filter(
-    (c) =>
-      c.title.toLowerCase().includes(query.toLowerCase()) ||
-      c.subtitle?.toLowerCase().includes(query.toLowerCase()) ||
-      c.category.toLowerCase().includes(query.toLowerCase())
-  );
+  const needle = q.toLowerCase();
+  const list = items.filter((i) => `${i.title} ${i.hint}`.toLowerCase().includes(needle));
 
-  const handleKeyDownList = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setSelectedIndex((prev) => (prev + 1) % (filtered.length || 1));
-      soundSys.playClick();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setSelectedIndex((prev) => (prev - 1 + filtered.length) % (filtered.length || 1));
-      soundSys.playClick();
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      if (filtered[selectedIndex]) {
-        filtered[selectedIndex].action();
-      }
-    }
+  const onKey = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); setSel((s) => (s + 1) % (list.length || 1)); soundSys.playTick(); }
+    if (e.key === 'ArrowUp') { e.preventDefault(); setSel((s) => (s - 1 + list.length) % (list.length || 1)); soundSys.playTick(); }
+    if (e.key === 'Enter') { e.preventDefault(); list[sel]?.run(); }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 sm:pt-28 px-4 bg-obsidian-950/80 backdrop-blur-md animate-fadeIn">
-      {/* Backdrop */}
-      <div className="fixed inset-0" onClick={onClose} />
-
-      <div className="relative w-full max-w-xl bg-obsidian-900 border border-white/15 rounded-2xl shadow-2xl shadow-black/80 overflow-hidden flex flex-col z-10 animate-slideDown">
-        {/* Search Input */}
-        <div className="flex items-center px-4 py-3.5 border-b border-white/10 bg-white/5">
-          <Search className="w-4 h-4 text-cyan-400 mr-3 shrink-0" />
-          <input
-            ref={inputRef}
-            type="text"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setSelectedIndex(0);
-            }}
-            onKeyDown={handleKeyDownList}
-            placeholder="Search commands or jump to section..."
-            className="w-full bg-transparent text-sm text-white placeholder-slate-400 focus:outline-none font-mono"
-          />
-          <kbd className="px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white/10 rounded border border-white/10">
-            ESC
-          </kbd>
-        </div>
-
-        {/* Copy Feedback */}
-        {copiedText && (
-          <div className="px-4 py-1.5 bg-emerald-500/20 border-b border-emerald-500/30 text-emerald-300 text-xs font-mono flex items-center justify-between">
-            <span>{copiedText}</span>
-            <Sparkles className="w-3.5 h-3.5" />
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 px-4 pt-[12vh]" onMouseDown={onClose}>
+      <div
+        ref={panel}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Find anything"
+        onMouseDown={(e) => e.stopPropagation()}
+        className="hang swing-in w-full max-w-lg"
+      >
+        <div className="marker-card overflow-hidden">
+          <div className="flex items-center gap-3 border-b-2 border-dashed border-[#8a6a3a]/60 px-4 py-3">
+            <Search className="h-5 w-5 shrink-0" aria-hidden="true" />
+            <input
+              ref={input}
+              value={q}
+              onChange={(e) => { setQ(e.target.value); setSel(0); }}
+              onKeyDown={onKey}
+              placeholder="Find a stall, copy an email…"
+              aria-label="Search"
+              className="marker-type w-full bg-transparent text-lg text-[#17130d] placeholder:text-[#6b5332] focus:outline-none"
+            />
+            <kbd className="rounded border border-[#17130d]/30 px-1.5 font-mono text-[0.7rem]">Esc</kbd>
           </div>
-        )}
-
-        {/* Results List */}
-        <div className="max-h-72 overflow-y-auto p-2 divide-y divide-white/5">
-          {filtered.length === 0 ? (
-            <div className="py-8 text-center text-slate-500 font-mono text-xs">
-              No matching commands found
-            </div>
-          ) : (
-            filtered.map((item, index) => {
-              const isSelected = index === selectedIndex;
-              return (
+          {note && <p className="bg-[#17130d] px-4 py-1.5 text-sm text-saffron" aria-live="polite">{note}</p>}
+          <ul className="max-h-80 overflow-y-auto p-2" aria-label="Results">
+            {list.length === 0 && <li className="px-3 py-6 text-center">Nothing on this street matches “{q}”.</li>}
+            {list.map((it, i) => (
+              <li key={it.id}>
                 <button
-                  key={item.id}
-                  onClick={() => item.action()}
-                  onMouseEnter={() => setSelectedIndex(index)}
-                  className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center justify-between transition-all ${
-                    isSelected
-                      ? 'bg-cyan-500/15 border border-cyan-500/30 text-white'
-                      : 'hover:bg-white/5 text-slate-300 border border-transparent'
-                  }`}
+                  onClick={it.run}
+                  onMouseEnter={() => setSel(i)}
+                  className={`flex w-full items-center gap-3 rounded-sm px-3 py-2.5 text-left ${i === sel ? 'bg-[#17130d] text-saffron' : 'text-[#17130d]'}`}
                 >
-                  <div className="flex items-center space-x-3 truncate">
-                    <div className="p-2 rounded-lg bg-white/5 border border-white/10 shrink-0">
-                      {item.icon}
-                    </div>
-                    <div className="truncate">
-                      <div className="text-xs font-medium font-sans">
-                        {item.title}
-                      </div>
-                      {item.subtitle && (
-                        <div className="text-[11px] font-mono text-slate-400 truncate">
-                          {item.subtitle}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="shrink-0 ml-2 hidden sm:flex items-center text-slate-500">
-                    <CornerDownLeft className="w-3.5 h-3.5" />
-                  </div>
+                  <span aria-hidden="true">{it.icon}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="marker-type block">{it.title}</span>
+                    <span className={`block truncate text-xs ${i === sel ? 'text-steam-dim' : 'text-[#4a3a22]'}`}>{it.hint}</span>
+                  </span>
+                  {i === sel && <CornerDownLeft className="h-4 w-4" aria-hidden="true" />}
                 </button>
-              );
-            })
-          )}
-        </div>
-
-        {/* Footer */}
-        <div className="px-4 py-2 border-t border-white/10 bg-obsidian-950 flex items-center justify-between text-[11px] font-mono text-slate-500">
-          <span>Navigate with ↑ ↓ and Enter</span>
-          <span className="text-cyan-400/80">Sworup Navigation</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

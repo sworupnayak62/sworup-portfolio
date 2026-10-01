@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T10:33:45+00:00",
+  "title": "Design System: Sworup Ranjan Nayak",
+  "extensions": {
+    "colorMeta": {
+      "asphalt": {
+        "role": "neutral",
+        "displayName": "Wet Asphalt",
+        "canonical": "oklch(16.4% 0.007 271.0)",
+        "tonalRamp": [
+          "oklch(15% 0.007 271.0)",
+          "oklch(26% 0.006 271.0)",
+          "oklch(37% 0.005 271.0)",
+          "oklch(48% 0.004 271.0)",
+          "oklch(60% 0.003 271.0)",
+          "oklch(72% 0.002 271.0)",
+          "oklch(84% 0.002 271.0)",
+          "oklch(95% 0.002 271.0)"
+        ]
+      },
+      "asphalt-2": {
+        "role": "neutral",
+        "displayName": "Stall Shade",
+        "canonical": "oklch(20.5% 0.010 268.2)",
+        "tonalRamp": [
+          "oklch(15% 0.009 268.2)",
+          "oklch(26% 0.009 268.2)",
+          "oklch(37% 0.008 268.2)",
+          "oklch(48% 0.007 268.2)",
+          "oklch(60% 0.005 268.2)",
+          "oklch(72% 0.004 268.2)",
+          "oklch(84% 0.003 268.2)",
+          "oklch(95% 0.003 268.2)"
+        ]
+      },
+      "asphalt-3": {
+        "role": "neutral",
+        "displayName": "Counter Top",
+        "canonical": "oklch(24.5% 0.014 272.8)",
+        "tonalRamp": [
+          "oklch(15% 0.012 272.8)",
+          "oklch(26% 0.014 272.8)",
+          "oklch(37% 0.012 272.8)",
+          "oklch(48% 0.010 272.8)",
+          "oklch(60% 0.008 272.8)",
+          "oklch(72% 0.006 272.8)",
+          "oklch(84% 0.004 272.8)",
+          "oklch(95% 0.004 272.8)"
+        ]
+      },
+      "saffron": {
+        "role": "primary",
+        "displayName": "Bulb Saffron",
+        "canonical": "oklch(81.0% 0.158 78.9)",
+        "tonalRamp": [
+          "oklch(15% 0.040 78.9)",
+          "oklch(26% 0.054 78.9)",
+          "oklch(37% 0.075 78.9)",
+          "oklch(48% 0.095 78.9)",
+          "oklch(60% 0.118 78.9)",
+          "oklch(72% 0.141 78.9)",
+          "oklch(84% 0.152 78.9)",
+          "oklch(95% 0.131 78.9)"
+        ]
+      },
+      "saffron-hot": {
+        "role": "primary",
+        "displayName": "Filament Gold",
+        "canonical": "oklch(88.7% 0.132 87.2)",
+        "tonalRamp": [
+          "oklch(15% 0.033 87.2)",
+          "oklch(26% 0.033 87.2)",
+          "oklch(37% 0.050 87.2)",
+          "oklch(48% 0.068 87.2)",
+          "oklch(60% 0.087 87.2)",
+          "oklch(72% 0.106 87.2)",
+          "oklch(84% 0.125 87.2)",
+          "oklch(95% 0.122 87.2)"
+        ]
+      },
+      "awning-blue": {
+        "role": "secondary",
+        "displayName": "Awning Blue",
+        "canonical": "oklch(43.2% 0.163 265.4)",
+        "tonalRamp": [
+          "oklch(15% 0.108 265.4)",
+          "oklch(26% 0.129 265.4)",
+          "oklch(37% 0.151 265.4)",
+          "oklch(48% 0.154 265.4)",
+          "oklch(60% 0.130 265.4)",
+          "oklch(72% 0.107 265.4)",
+          "oklch(84% 0.083 265.4)",
+          "oklch(95% 0.062 265.4)"
+        ]
+      },
+      "banner-red": {
+        "role": "secondary",
+        "displayName": "Banner Red",
+        "canonical": "oklch(55.3% 0.183 29.1)",
+        "tonalRamp": [
+          "oklch(15% 0.095 29.1)",
+          "oklch(26% 0.119 29.1)",
+          "oklch(37% 0.143 29.1)",
+          "oklch(48% 0.167 29.1)",
+          "oklch(60% 0.173 29.1)",
+          "oklch(72% 0.146 29.1)",
+          "oklch(84% 0.120 29.1)",
+          "oklch(95% 0.096 29.1)"
+        ]
+      },
+      "marigold": {
+        "role": "tertiary",
+        "displayName": "Marigold",
+        "canonical": "oklch(67.1% 0.165 51.4)",
+        "tonalRamp": [
+          "oklch(15% 0.062 51.4)",
+          "oklch(26% 0.084 51.4)",
+          "oklch(37% 0.105 51.4)",
+          "oklch(48% 0.127 51.4)",
+          "oklch(60% 0.151 51.4)",
+          "oklch(72% 0.155 51.4)",
+          "oklch(84% 0.132 51.4)",
+          "oklch(95% 0.110 51.4)"
+        ]
+      },
+      "steam": {
+        "role": "neutral",
+        "displayName": "Steam",
+        "canonical": "oklch(93.6% 0.015 80.7)",
+        "tonalRamp": [
+          "oklch(15% 0.004 80.7)",
+          "oklch(26% 0.004 80.7)",
+          "oklch(37% 0.005 80.7)",
+          "oklch(48% 0.007 80.7)",
+          "oklch(60% 0.009 80.7)",
+          "oklch(72% 0.011 80.7)",
+          "oklch(84% 0.013 80.7)",
+          "oklch(95% 0.015 80.7)"
+        ]
+      },
+      "steam-dim": {
+        "role": "neutral",
+        "displayName": "Dim Steam",
+        "canonical": "oklch(77.6% 0.020 80.1)",
+        "tonalRamp": [
+          "oklch(15% 0.005 80.1)",
+          "oklch(26% 0.008 80.1)",
+          "oklch(37% 0.010 80.1)",
+          "oklch(48% 0.013 80.1)",
+          "oklch(60% 0.016 80.1)",
+          "oklch(72% 0.019 80.1)",
+          "oklch(84% 0.018 80.1)",
+          "oklch(95% 0.016 80.1)"
+        ]
+      },
+      "kraft": {
+        "role": "neutral",
+        "displayName": "Kraft",
+        "canonical": "oklch(74.5% 0.087 78.8)",
+        "tonalRamp": [
+          "oklch(15% 0.025 78.8)",
+          "oklch(26% 0.036 78.8)",
+          "oklch(37% 0.048 78.8)",
+          "oklch(48% 0.059 78.8)",
+          "oklch(60% 0.072 78.8)",
+          "oklch(72% 0.084 78.8)",
+          "oklch(84% 0.077 78.8)",
+          "oklch(95% 0.066 78.8)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Sign Ink",
+        "canonical": "oklch(18.9% 0.013 77.8)",
+        "tonalRamp": [
+          "oklch(15% 0.012 77.8)",
+          "oklch(26% 0.012 77.8)",
+          "oklch(37% 0.010 77.8)",
+          "oklch(48% 0.008 77.8)",
+          "oklch(60% 0.007 77.8)",
+          "oklch(72% 0.005 77.8)",
+          "oklch(84% 0.003 77.8)",
+          "oklch(95% 0.003 77.8)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Gate Sign",
+        "purpose": "The name in the hero; smaller clamp for the contact heading."
+      },
+      "headline": {
+        "displayName": "Section Sign",
+        "purpose": "Section headings, saffron on asphalt or steam on blue."
+      },
+      "title": {
+        "displayName": "Sign Plate",
+        "purpose": "Stall, role and degree plates; rail wordmark."
+      },
+      "label": {
+        "displayName": "Marker",
+        "purpose": "Buttons, marker-card numbers and captions, district names, dates, skill levels."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All reading copy; 34rem to 60ch measure."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Real machine output (EMR record), skills-used line, kbd hints only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "board-cast",
+        "value": "0 18px 40px -18px rgba(0,0,0,0.9)",
+        "purpose": "Painted sign boards."
+      },
+      {
+        "name": "tag-cast",
+        "value": "0 10px 22px -8px rgba(0,0,0,0.7)",
+        "purpose": "Kraft marker cards."
+      },
+      {
+        "name": "ticket-cast",
+        "value": "0 20px 40px -18px rgba(0,0,0,0.8)",
+        "purpose": "Steam-paper order ticket."
+      },
+      {
+        "name": "button-bloom",
+        "value": "drop-shadow(0 6px 18px rgba(247,179,43,0.28))",
+        "purpose": "Saffron button at rest; 0 10px 26px / 0.45 on hover."
+      },
+      {
+        "name": "bulb-on",
+        "value": "0 0 10px 2px rgba(247,179,43,0.65), 0 0 28px 6px rgba(247,179,43,0.22)",
+        "purpose": "Lit bulb."
+      },
+      {
+        "name": "bulb-warm",
+        "value": "0 0 6px 1px rgba(247,179,43,0.3)",
+        "purpose": "Idle warm bulb in the map."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for button lift, swing-in and awning hover."
+      },
+      {
+        "name": "swing-in",
+        "value": "1.6s damped rotate from -7deg to 0 about the top pivot",
+        "purpose": "Signs entering view."
+      },
+      {
+        "name": "sway",
+        "value": "5.5s ease-in-out infinite, +/-1.6deg",
+        "purpose": "Hanging cards and tickets (5.5-7s)."
+      },
+      {
+        "name": "steam",
+        "value": "4.5s ease-out infinite, rise 70px",
+        "purpose": "Kitchen steam while cooking."
+      },
+      {
+        "name": "chase",
+        "value": "0.5-0.7s staggered bulb pulse",
+        "purpose": "Light running to a hovered stall or target district."
+      },
+      {
+        "name": "flicker-on",
+        "value": "opacity 0.2 to 1 to 0.4 to 1",
+        "purpose": "Bulbs lighting."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation and transition durations 0.001ms",
+        "purpose": "Everything lit and still."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Saffron Glow Button",
+      "kind": "button",
+      "refersTo": "button-glow",
+      "description": "Primary action (email). The only button that glows.",
+      "html": "<a class=\"ds-btn-glow\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/></svg>Email Sworup</a>",
+      "css": ".ds-btn-glow{display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;padding:1rem 1.9rem 1.05rem;font-family:'Permanent Marker',cursive;font-size:1.15rem;line-height:1;border:0;cursor:pointer;text-decoration:none;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),filter 0.35s cubic-bezier(0.16,1,0.3,1);color:#17130d;background:#f7b32b;-webkit-mask:url('/brush.svg') center/100% 100% no-repeat;mask:url('/brush.svg') center/100% 100% no-repeat;filter:drop-shadow(0 6px 18px rgba(247,179,43,0.28));}.ds-btn-glow:hover{background:#ffd46b;transform:translateY(-2px) rotate(-1deg);filter:drop-shadow(0 10px 26px rgba(247,179,43,0.45));}.ds-btn-glow:active{transform:translateY(1px) scale(0.98);}.ds-btn-glow:focus-visible{outline:3px solid #f7b32b;outline-offset:3px;border-radius:4px;}"
+    },
+    {
+      "name": "Awning Outline Button",
+      "kind": "button",
+      "refersTo": "button-awning",
+      "description": "Secondary action on asphalt; painted brush-stroke outline.",
+      "html": "<button class=\"ds-btn-awning\">Walk the stalls<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14\"/><path d=\"m19 12-7 7-7-7\"/></svg></button>",
+      "css": ".ds-btn-awning{display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;padding:1rem 1.9rem 1.05rem;font-family:'Permanent Marker',cursive;font-size:1.15rem;line-height:1;border:0;cursor:pointer;text-decoration:none;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),filter 0.35s cubic-bezier(0.16,1,0.3,1);color:#efe9df;background:url('/brush-outline.svg') center/100% 100% no-repeat;}.ds-btn-awning:hover{transform:translateY(-2px) rotate(1deg);background-color:rgba(36,70,168,0.55);}.ds-btn-awning:active{transform:translateY(1px) scale(0.98);}.ds-btn-awning:focus-visible{outline:3px solid #f7b32b;outline-offset:3px;border-radius:4px;}"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Primary action when the ground is saffron (the counter).",
+      "html": "<div style=\"background:#f7b32b;padding:24px\"><a class=\"ds-btn-ink\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/></svg>Email Sworup</a></div>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;padding:1rem 1.9rem 1.05rem;font-family:'Permanent Marker',cursive;font-size:1.15rem;line-height:1;border:0;cursor:pointer;text-decoration:none;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),filter 0.35s cubic-bezier(0.16,1,0.3,1);color:#ffd46b;background:#17130d;-webkit-mask:url('/brush.svg') center/100% 100% no-repeat;mask:url('/brush.svg') center/100% 100% no-repeat;}.ds-btn-ink:hover{background:#000;transform:translateY(-2px) rotate(-1deg);}.ds-btn-ink:active{transform:translateY(1px) scale(0.98);}.ds-btn-ink:focus-visible{outline:3px solid #f7b32b;outline-offset:3px;border-radius:4px;}"
+    },
+    {
+      "name": "Tech Chip",
+      "kind": "chip",
+      "refersTo": "chip-tech",
+      "description": "Static 'built with' tag on stall boards.",
+      "html": "<ul class=\"ds-chips\"><li class=\"ds-chip\">LangGraph</li><li class=\"ds-chip\">FastAPI</li><li class=\"ds-chip\">React</li></ul>",
+      "css": ".ds-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:16px;background:#15171c;}.ds-chip{background:#1e2027;color:#bdb5a8;border-radius:2px;padding:4px 10px;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:0.8rem;}"
+    },
+    {
+      "name": "Ask Input",
+      "kind": "input",
+      "refersTo": null,
+      "description": "Counter question field: strokeless, separated by a hairline rule, saffron submit.",
+      "html": "<form class=\"ds-ask\" onsubmit=\"return false\"><label for=\"ds-q\" class=\"ds-sr\">Ask a question about Sworup</label><input id=\"ds-q\" class=\"ds-ask-input\" placeholder=\"e.g. What did he build with LangGraph?\"><button class=\"ds-ask-send\" aria-label=\"Ask\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m22 2-7 20-4-9-9-4Z\"/><path d=\"M22 2 11 13\"/></svg></button></form>",
+      "css": ".ds-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}.ds-ask{position:relative;display:flex;align-items:center;gap:8px;padding:12px;background:#15171c;border-top:1px solid rgba(255,255,255,0.1);}.ds-ask-input{flex:1;min-width:0;background:transparent;border:0;padding:8px;color:#efe9df;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:1rem;}.ds-ask-input::placeholder{color:#8f887c;}.ds-ask-input:focus-visible,.ds-ask-send:focus-visible{outline:3px solid #f7b32b;outline-offset:3px;border-radius:4px;}.ds-ask-send{border:0;border-radius:2px;background:#f7b32b;color:#17130d;padding:10px;cursor:pointer;display:inline-flex;}.ds-ask-send:disabled{opacity:0.4;}"
+    },
+    {
+      "name": "Market Map Rail",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Desktop district nav: bulbs hung on a wire, current district lit saffron.",
+      "html": "<nav class=\"ds-map\" aria-label=\"Market map\"><span class=\"ds-map-mark\">Sworup</span><ol class=\"ds-map-list\"><li><a class=\"ds-map-link\" href=\"#\"><span class=\"ds-bulb\"></span><span><span class=\"ds-map-sign\">Stalls</span><span class=\"ds-map-plain\">Projects</span></span></a></li><li><a class=\"ds-map-link is-current\" href=\"#\" aria-current=\"location\"><span class=\"ds-bulb is-on\"></span><span><span class=\"ds-map-sign\">Kitchen</span><span class=\"ds-map-plain\">Pipeline demo</span></span></a></li><li><a class=\"ds-map-link\" href=\"#\"><span class=\"ds-bulb\"></span><span><span class=\"ds-map-sign\">Menu</span><span class=\"ds-map-plain\">Skills</span></span></a></li></ol></nav>",
+      "css": ".ds-map{width:208px;padding:24px 20px;background:#0d0e11;border-right:1px solid rgba(255,255,255,0.05);}.ds-map-mark{font-family:'Caveat Brush',cursive;font-size:2.6rem;line-height:0.92;color:#f7b32b;}.ds-map-list{position:relative;list-style:none;margin:40px 0 0;padding:0;}.ds-map-list::before{content:'';position:absolute;left:11px;top:12px;bottom:12px;width:1px;background:#4a4032;}.ds-map-link{position:relative;display:flex;align-items:center;gap:12px;padding:10px 8px 10px 0;text-decoration:none;}.ds-map-sign{display:block;font-family:'Permanent Marker',cursive;font-size:1.05rem;color:#efe9df;transition:color .2s;}.ds-map-plain{display:block;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:0.75rem;color:#bdb5a8;}.ds-map-link:hover .ds-map-sign,.ds-map-link.is-current .ds-map-sign{color:#f7b32b;}.ds-map-link:focus-visible{outline:3px solid #f7b32b;outline-offset:3px;border-radius:4px;}.ds-bulb{position:relative;z-index:1;margin:0 5px;flex-shrink:0;width:0.7rem;height:0.85rem;border-radius:50% 50% 48% 48%;background:#a8761c;box-shadow:0 0 6px 1px rgba(247,179,43,0.3);}.ds-bulb.is-on{background:#ffd46b;box-shadow:0 0 10px 2px rgba(247,179,43,0.65),0 0 28px 6px rgba(247,179,43,0.22);}"
+    },
+    {
+      "name": "Marker Card",
+      "kind": "card",
+      "refersTo": "marker-card",
+      "description": "Kraft price tag hung on a string: big number, caption, where and when.",
+      "html": "<div class=\"ds-tag-wrap\"><span class=\"ds-tag-string\"></span><div class=\"ds-tag\"><div class=\"ds-tag-num\">50%</div><div class=\"ds-tag-cap\">less manual charting</div><div class=\"ds-tag-src\">Speech-to-EMR agent pipeline<br>Squbix · 2025 to now</div></div></div>",
+      "css": ".ds-tag-wrap{position:relative;display:inline-block;padding:28px 24px 24px;background:#0d0e11;}.ds-tag-string{position:absolute;left:50%;top:0;width:1px;height:28px;background:#6b5a40;}.ds-tag{width:13.5rem;padding:16px 20px;background:#caa66c;background-image:repeating-linear-gradient(90deg,rgba(90,60,20,0.06) 0 2px,transparent 2px 7px);color:#17130d;box-shadow:0 10px 22px -8px rgba(0,0,0,0.7);transform-origin:top center;rotate:-3deg;}.ds-tag-num{font-family:'Permanent Marker',cursive;font-size:2.6rem;line-height:1;color:#c7372b;}.ds-tag-cap{font-family:'Permanent Marker',cursive;font-size:1.05rem;line-height:1.25;margin-top:4px;}.ds-tag-src{margin-top:12px;padding-top:8px;border-top:1px solid rgba(138,106,58,0.5);font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:0.8rem;line-height:1.375;color:#3a2c18;}"
+    },
+    {
+      "name": "Stall",
+      "kind": "custom",
+      "refersTo": "board",
+      "description": "Signature: scalloped awning, bulb row, grained board with a hanging brushed sign plate.",
+      "html": "<article class=\"ds-stall\"><div class=\"ds-awning\"></div><div class=\"ds-stall-bulbs\"><span></span><span></span><span></span><span></span><span></span><span></span></div><div class=\"ds-board\"><h3 class=\"ds-sign\">GitHub MCP Server</h3><p class=\"ds-stall-copy\">Command-line GitHub MCP server connecting LLM agents directly to GitHub functions.</p></div></article>",
+      "css": ".ds-stall{max-width:360px;padding:16px;background:#0d0e11;}.ds-awning{height:3.25rem;background:repeating-linear-gradient(90deg,#2446a8 0 2.25rem,#efe9df 2.25rem 4.5rem);-webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 0.9rem) no-repeat,radial-gradient(circle at 50% 0,#000 0.95rem,transparent 1rem) bottom left/2.25rem 0.9rem repeat-x;mask:linear-gradient(#000 0 0) top/100% calc(100% - 0.9rem) no-repeat,radial-gradient(circle at 50% 0,#000 0.95rem,transparent 1rem) bottom left/2.25rem 0.9rem repeat-x;transform-origin:top center;transition:transform .5s cubic-bezier(0.16,1,0.3,1);}.ds-stall:hover .ds-awning{transform:translateY(-4px) scaleY(1.06);}.ds-stall-bulbs{display:flex;justify-content:space-around;padding:0 16px;margin-top:-4px;}.ds-stall-bulbs span{width:0.7rem;height:0.85rem;border-radius:50% 50% 48% 48%;background:#ffd46b;box-shadow:0 0 10px 2px rgba(247,179,43,0.65),0 0 28px 6px rgba(247,179,43,0.22);}.ds-board{margin-top:12px;padding:8px 28px 24px;background:#15171c;box-shadow:0 18px 40px -18px rgba(0,0,0,0.9);color:#efe9df;}.ds-sign{display:inline-block;margin:-4px 0 0;padding:12px 24px 16px;background:#2446a8;color:#efe9df;font-family:'Caveat Brush',cursive;font-weight:400;font-size:2.35rem;line-height:0.95;-webkit-mask:url('/brush.svg') center/100% 100% no-repeat;mask:url('/brush.svg') center/100% 100% no-repeat;transform-origin:top center;transition:transform .5s;}.ds-stall:hover .ds-sign{transform:rotate(-1.5deg);}.ds-stall-copy{margin-top:20px;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:1.05rem;line-height:1.625;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night-Market Sign River",
+    "overview": "The site is a street market at dusk. The ground is wet asphalt with grain on it. The only light comes from saffron bulbs strung across the top and down the left rail, and the bulbs light up as the visitor walks past. Everything else is paint: flat sign inks on rough, brush-edged boards, kraft price tags hanging on strings, and striped awnings with scalloped hems over each stall. The mood is warm and busy but still readable. Signs carry the personality and the body copy stays plain.\n\nNothing is glossy. There is no glass, no gradient text and no neon on black. Depth comes from boards casting soft shadows on the asphalt and from signs hanging off a top pivot. The motion follows the same logic: signs swing and settle, cards sway on their strings, steam drifts up, and bulbs flicker on. With reduced motion everything is shown lit and still.\n\nThe layout reads as a street. A fixed market-map rail on the left shows the current district, and the sections are laid out along the page as stalls, a kitchen, a menu board, a workshop ledger and finally the counter.",
+    "keyCharacteristics": [
+      "Grain-textured asphalt ground; saffron is the only emitted light.",
+      "Flat sign inks (awning blue, banner red, marigold) used as painted planes, never as glows or gradients.",
+      "Brush-edged silhouettes come from an authored SVG mask, not from border-radius.",
+      "Brush lettering for names and headings, marker for labels and numbers, a plain grotesque for reading, mono only for real data.",
+      "Objects hang: signs and cards pivot from the top and sway."
+    ],
+    "rules": [
+      {
+        "name": "The One Light Rule",
+        "body": "Saffron is the only color that glows. Only saffron and filament gold may carry a `box-shadow` or `drop-shadow` glow or a radial light pool. The sign inks stay flat.",
+        "section": "colors"
+      },
+      {
+        "name": "The Painted Plane Rule",
+        "body": "Awning blue, banner red and marigold always fill a whole plane: a sign plate, an awning stripe, a section ground or a brush stroke. They are never used as thin text accents or borders on asphalt.",
+        "section": "colors"
+      },
+      {
+        "name": "The Legible Sign Rule",
+        "body": "Steam lettering is allowed on awning blue and banner red. On marigold and kraft, lettering must be ink. Marigold cannot hold steam text at a readable contrast (about 2.6:1).",
+        "section": "colors"
+      },
+      {
+        "name": "The Real-Data Mono Rule",
+        "body": "Mono is only for machine output and key hints. Never use it for decoration, labels or headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence-Case Sign Rule",
+        "body": "Brush and marker lettering is set in sentence or title case at natural tracking. The faces already carry the character, so no uppercase tracking is added.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hanging Rule",
+        "body": "Signs and cards hang from a top pivot (`transform-origin: top center`), often at a slight fixed tilt (−3° to 2.5°). They enter with a damped swing (1.6s, ease-out `cubic-bezier(0.16,1,0.3,1)`) and may sway at ±1.6° on long loops of 5.5–7s. They never slide in from the side or fade up.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do put every page ground on asphalt with `grain.svg`, and switch the section ground to a flat ink only at a story beat (blue kitchen, saffron counter).",
+      "Do keep glow, light pools and bloom on saffron and filament gold only.",
+      "Do use the brush mask or the brush-outline stroke for sign plates and primary buttons. Keep border-radius for small functional controls (2px, 4px, full).",
+      "Do hang signs and cards from a top pivot with a slight tilt, and animate them with the damped swing and slow sway, with a lit, still state under reduced motion.",
+      "Do attach where and when to every number on a marker card.",
+      "Do put ink lettering on saffron, kraft, steam paper and marigold."
+    ],
+    "donts": [
+      "Don't use glass cards, backdrop-blurred panels (except the phone nav bar), gradient text or neon-on-black accents.",
+      "Don't give awning blue, banner red or marigold a glow or a gradient.",
+      "Don't set steam text on marigold.",
+      "Don't use JetBrains Mono for anything that is not real data or a key hint.",
+      "Don't put small tracked uppercase labels above headings."
+    ]
+  }
+}
